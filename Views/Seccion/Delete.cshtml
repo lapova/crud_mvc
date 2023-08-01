@@ -1,0 +1,47 @@
+﻿@model APICrudMvc.Models.Seccion
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h3>¿Estás seguro de eliminar esto?</h3>
+
+<br /><br />
+
+@if (ViewBag.Mensaje != null)
+{
+    <div class="alert @(ViewBag.MensajeTipo)">
+        @ViewBag.Mensaje
+    </div>
+}
+
+<div>
+    <h4>Eliminar</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.idSeccion)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.idSeccion)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.nombre)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.nombre)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.descripcion)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.descripcion)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete" asp-route-idSeccion="@Model.idSeccion" method="post">
+        <input type="submit" value="Eliminar" class="btn btn-danger" />
+        <br /><br />
+        <a asp-action="Index">Volver a inicio</a>
+    </form>
+</div>

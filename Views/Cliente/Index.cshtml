@@ -1,0 +1,61 @@
+﻿@model IEnumerable<APICrudMvc.Models.Cliente>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h4>Lista de clientes</h4>
+<br/>
+
+<p>
+    <a asp-action="Create" role="button" class="btn btn-success">Nuevo registro</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.idCliente)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.apellido)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.correo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tipoCliente)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr style="background-color: @(item.tipoCliente == "natural" ? "yellow" : "#77dd77")">
+                <td>
+                    @Html.DisplayFor(modelItem => item.idCliente)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.apellido)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.correo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tipoCliente)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-idCliente="@item.idCliente" role="button" class="btn btn-light">Editar</a> |
+                    <a asp-action="Delete" asp-route-idCliente="@item.idCliente" role="button" class="btn btn-danger">Eliminar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
